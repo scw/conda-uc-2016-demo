@@ -178,6 +178,34 @@ Current conda install:
 Conda Basics {data-background="images/bg-7.png"}
 ------------
 
+``conda list``
+
+```
+# packages in environment at C:\ArcGIS\bin\Python\envs\arcgispro-py3:
+#
+arcgispro                 1.0                           0    esri
+matplotlib                1.4.3                np19py34_0    defaults
+nose                      1.3.7                    py34_0    defaults
+numpy                     1.9.3                   py34_0e  [arcgispro]  esri
+pandas                    0.17.1               np19py34_0    esri
+pip                       8.0.3                    py34_0    defaults
+pyparsing                 2.0.3                    py34_0    defaults
+pypdf2                    1.25.1                     py_0    esri
+python                    3.4.4                         2    defaults
+python-dateutil           2.4.2                    py34_0    defaults
+pytz                      2015.7                   py34_0    defaults
+scipy                     0.16.1              np19py34_0e  [arcgispro]  esri
+setuptools                20.1.1                   py34_0    defaults
+six                       1.10.0                   py34_0    defaults
+sympy                     0.7.6.1                  py34_0    defaults
+wheel                     0.29.0                   py34_0    defaults
+xlrd                      0.9.4                    py34_0    defaults
+xlwt                      1.0.0                    py34_0    defaults
+```
+
+Conda Basics {data-background="images/bg-7.png"}
+------------
+
 Creating new environments:
 
  - A few different ways. Can manually specify the dependencies:
