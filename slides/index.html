@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="reveal.js/favicon.ico">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Shaun Walbridge">
+  <meta name="author" content="Mark Janikas">
+  <meta name="author" content="Ting Lee">
+  <title>Harnessing the Power of Python in ArcGIS Using the Conda Distribution</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #303030; color: #cccccc; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+td.sourceCode { padding-left: 5px; }
+pre, code { color: #cccccc; background-color: #303030; }
+code > span.kw { color: #f0dfaf; } /* Keyword */
+code > span.dt { color: #dfdfbf; } /* DataType */
+code > span.dv { color: #dcdccc; } /* DecVal */
+code > span.bn { color: #dca3a3; } /* BaseN */
+code > span.fl { color: #c0bed1; } /* Float */
+code > span.ch { color: #dca3a3; } /* Char */
+code > span.st { color: #cc9393; } /* String */
+code > span.co { color: #7f9f7f; } /* Comment */
+code > span.ot { color: #efef8f; } /* Other */
+code > span.al { color: #ffcfaf; } /* Alert */
+code > span.fu { color: #efef8f; } /* Function */
+code > span.er { color: #c3bf9f; } /* Error */
+code > span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+code > span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code > span.sc { color: #dca3a3; } /* SpecialChar */
+code > span.vs { color: #cc9393; } /* VerbatimString */
+code > span.ss { color: #cc9393; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { } /* Variable */
+code > span.cf { color: #f0dfaf; } /* ControlFlow */
+code > span.op { color: #f0efd0; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code > span.at { } /* Attribute */
+code > span.do { color: #7f9f7f; } /* Documentation */
+code > span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code > span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code > span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/esri-dev-summit-2016.css" id="theme">
+  <link rel="stylesheet" href="src/devsummit-custom.css"/>
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="reveal.js/lib/css/solarized_dark.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section data-background="images/title.png" class="title">
+  <h1 class="title">Harnessing the Power of Python in ArcGIS Using the Conda Distribution</h1>
+  <h2 class="author">Shaun Walbridge</h2>
+  <h2 class="author">Mark Janikas</h2>
+  <h2 class="author">Ting Lee</h2>
+</section>
+
+<section class="slide level2">
+
+<section data-background="images/title.png">
+<h2>
+<a href="https://github.com/scw/conda-devsummit-2016-talk" class="uri">https://github.com/scw/conda-devsummit-2016-talk</a>
+</h2>
+<h3>
+<a href="https://4326.us/esri/conda/devsummit-2016-conda-arcgis-presentation-handout.pdf">Handout PDF</a>
+</h3>
+<h3>
+<a href="https://4326.us/esri/conda/devsummit-2016-conda-arcgis-presentation-full.pdf">High Quality PDF (2MB)</a>
+</h3>
+</section>
+</section>
+<section><section id="conda" class="titleslide slide level1" data-background="images/bg-1.png"><h1>Conda</h1></section><section id="conda-1" class="slide level2" data-background="images/bg-1.png">
+<h1>Conda</h1>
+<ul>
+<li>Brand new: thought it was more important to show it to you than to focus on telling you about it</li>
+<li>Time today to discuss your needs and what we might do to solve your problems</li>
+</ul>
+</section><section id="why-python" class="slide level2" data-background="images/bg-1.png">
+<h1>Why Python? <img src="images/logos/Python_64x64.png" class="tight" /></h1>
+<ul>
+<li>Accessible for new-comers, and the <a href="http://cacm.acm.org/blogs/blog-cacm/176450-python-is-now-the-most-popular-introductory-teaching-language-at-top-us-universities/fulltext">most taught first language in US universites</a></li>
+<li>Extensive package collection (56 thousand on <a href="https://pypi.python.org/pypi">PyPI</a>), broad user-base</li>
+<li>Strong glue language used to bind together many environments, both open source and commercial</li>
+<li>Open source with liberal license — do what you want</li>
+</ul>
+</section><section id="package-management-for-python" class="slide level2" data-background="images/bg-1.png">
+<h1>Package Management for Python</h1>
+<p>Why not <code>pip</code>, wheels, virtualenvs?</p>
+<ul>
+<li>Don’t handle the harder problem of system dependencies, considered out of scope by Python packagers — does it end up in <code>site-packages</code>?</li>
+<li>Package devs: On OSX and Linux, ‘easy’ to get the deps! Use a system package manager (e.g. <code>apt</code>, <code>brew</code>, <code>yum</code>) and the included compiler (e.g. <code>clang</code>, <code>gcc</code>).</li>
+<li>It’s still not easy to make reproducible builds, and what about Windows?</li>
+</ul>
+</section><section id="what-about-windows" class="slide level2" data-background="images/bg-1.png">
+<h1>What about Windows?</h1>
+<ul>
+<li>We are particularly stuck on Windows which lacks broadly used package management
+<ul>
+<li>NuGet is great, but not a system-level package manager</li>
+<li>If managing applications, try <a href="https://chocolatey.org/">Chocolatey</a></li>
+</ul></li>
+<li>Only devs have a C compiler on their machine
+<ul>
+<li>The essential model is compilers for few, runtimes for all</li>
+</ul></li>
+<li>Package management is hard! (Except on JavaScript – universal compilers are a leg-up)</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Enter Conda</li>
+</ul>
+</div>
+</section><section id="why-conda" class="slide level2" data-background="images/bg-1.png">
+<h1>Why Conda?</h1>
+<figure>
+<img src="images/logos/continuum_analytics.png" class="tight" style="width: 200px" />
+</figure>
+<ul>
+<li><p>Scientific Python community identified that there was a gap not being addressed by the core Python infrastructure, limiting their ability to get packages into the hands of users</p></li>
+<li><p>Industry standard built by people who care about this space – Continuum Analytics</p></li>
+</ul>
+</section><section id="why-conda-1" class="slide level2" data-background="images/bg-1.png">
+<h1>Why Conda?</h1>
+<figure>
+<img src="images/logos/continuum_analytics.png" class="tight" style="width: 200px" />
+</figure>
+<ul>
+<li><p>It solves a hard problem:</p></li>
+<li>Handles dependencies for many languages (C, C++, R and of course Python)</li>
+<li><p>Built for Python first, but it really solves a much broader infrastructural issue.</p></li>
+</ul>
+</section></section>
+<section><section id="conda-2" class="titleslide slide level1" data-background="images/bg-7.png"><h1>Conda</h1></section><section id="conda-3" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda <img src="images/logos/anaconda_mini.png" class="tight" /></h1>
+<ul>
+<li>Cross-platform: simply develop recipes for building and installing software on Linux, OS X and Windows. All it takes: a <code>meta.yaml</code>, and a build recipe.</li>
+<li>Open source (BSD): Esri is using it, you can use it in your own projects for other contexts</li>
+</ul>
+</section><section id="conda-4" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda <img src="images/logos/anaconda_mini.png" class="tight" /></h1>
+<p>What can it install? Not just scientific packages. It can help with:</p>
+<ul>
+<li>GUI toolkits (PyQt, TKinter)</li>
+<li>C++ Libraries (Boost)</li>
+<li>IDEs (Spyder, Juptyer)</li>
+</ul>
+<p>See <a href="https://github.com/conda/conda-recipes/">conda-recipes</a> for a comprehensive set of build recipes. Everything from applications to compilers to Python modules, hundreds of maintained recipes across many problem domains.</p>
+</section><section id="conda-5" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda <img src="images/logos/anaconda_mini.png" class="tight" /></h1>
+<ul>
+<li>Environments: Can isolate a Python environment, flexibly make changes withot affecting installed software.</li>
+<li>Requirements – include explicit state information, not just the package name. Names aren’t enough!</li>
+<li>Also handles platforms and Jupyter notebooks</li>
+</ul>
+</section><section id="how-does-it-work" class="slide level2" data-background="images/bg-7.png">
+<h1>How Does it Work?</h1>
+<p>Conda packages can come from a variety of locations:</p>
+<ul>
+<li>On disk (<code>file://</code>)</li>
+<li>Public repositories hosted on Anaconda Cloud</li>
+<li>Public repositories self-hosted</li>
+<li>Private repositories</li>
+<li>Paid private repositories</li>
+</ul>
+</section><section id="conda-basics" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda Basics</h1>
+<div style="float: right; align: right">
+<figure>
+<img src="images/hazard.png" class="tight" />
+</figure>
+</div>
+<div>
+<p>Command line interface</p>
+<p>Will show what we’re working on to make this easier, especially for non-developers</p>
+<p><a href="http://conda.pydata.org/docs/_downloads/conda-cheatsheet.pdf">Conda Cheatsheet</a></p>
+</div>
+</section><section id="conda-basics-1" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda Basics</h1>
+<p>To start:</p>
+<pre><code>conda --help</code></pre>
+<ul>
+<li>A collection of packages and Python install is called an <em>environment</em> or <em>env</em>, the building block for managing Python with Conda</li>
+<li>Can have multiple environments and seamlessly switch between them</li>
+</ul>
+</section><section id="conda-basics-2" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda Basics</h1>
+<p>Activating environments, a couple ways:</p>
+<ul>
+<li>Use the shortcuts</li>
+<li>Manually activate the environment:</li>
+</ul>
+<pre class="sh"><code>    cd /d C:\ArcGIS\bin\Python\Scripts
+    activate arcgispro-py3</code></pre>
+</section><section id="conda-basics-3" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda Basics</h1>
+<p>Once you’re in an environment get details with <code>info</code>:</p>
+<pre><code>conda info</code></pre>
+<p>Conda info is the starting point – it tells you the state of the environment.</p>
+</section><section id="conda-basics-4" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda Basics</h1>
+<p><code>conda info</code></p>
+<pre><code>Current conda install:
+
+             platform : win-64
+        conda version : 4.0.4
+  conda-build version : not installed
+       python version : 3.5.1.final.0
+     requests version : 2.9.1
+     root environment : C:\ArcGIS\bin\Python  (writable)
+  default environment : C:\ArcGIS\bin\Python\envs\arcgispro-py3
+     envs directories : C:\ArcGIS\bin\Python\envs
+        package cache : C:\ArcGIS\bin\Python\pkgs
+         channel URLs : https://conda.anaconda.org/esri/win-64/
+                        https://conda.anaconda.org/esri/noarch/
+                        https://repo.continuum.io/pkgs/free/win-64/
+                        https://repo.continuum.io/pkgs/free/noarch/
+          config file : C:\ArcGIS\bin\Python\.condarc</code></pre>
+</section><section id="conda-basics-5" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda Basics</h1>
+<p>Creating new environments:</p>
+<ul>
+<li>A few different ways. Can manually specify the dependencies:</li>
+</ul>
+<pre><code>    conda create --name my_env python=3.4 numpy flask dask</code></pre>
+<ul>
+<li><p>Can also use a file which includes all the dependencies:</p>
+<pre><code>conda create --name my_env --file my_sweet_depends.txt</code></pre>
+<p>These can contain explcit information about channels, to ensure that the new environment precisely matches the requirements.</p></li>
+</ul>
+</section><section id="conda-vs" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda vs…</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Means</th>
+<th style="text-align: left;">Will Ship?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Conda</td>
+<td style="text-align: left;">The command itself</td>
+<td style="text-align: left;">✓</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Miniconda</td>
+<td style="text-align: left;">A minimum set of Python packages to build and run Conda.</td>
+<td style="text-align: left;">✓</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Anaconda</td>
+<td style="text-align: left;">A distribution 200+ packages built with Conda</td>
+<td style="text-align: left;"> </td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Anaconda Server</td>
+<td style="text-align: left;">Host the full infrastructure internally</td>
+<td style="text-align: left;"> </td>
+</tr>
+</tbody>
+</table>
+</section><section id="conda-demo" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda Demo</h1>
+</section></section>
+<section><section id="deeper-dive" class="titleslide slide level1" data-background="images/bg-7.png"><h1>Deeper Dive</h1></section><section id="conda-behind-firewall" class="slide level2" data-background="images/bg-7.png">
+<h1>Conda Behind Firewall</h1>
+<ul>
+<li><p>How’s it work?</p></li>
+<li><p>Lock it down: Don’t use network</p></li>
+<li><p>Can vet the installation</p></li>
+<li><p>Will work out of the box with default packages without any network connectivity</p></li>
+</ul>
+</section><section id="condarc" class="slide level2" data-background="images/bg-7.png">
+<h1><code>.condarc</code> </h1>
+<ul>
+<li>Modify defaults with a simple simple YAML file for configuration</li>
+<li>Can be updated with <code>conda config</code>, just like using <code>git config</code> to update the default configuration</li>
+</ul>
+<p><a href="https://github.com/conda/conda/blob/ae721928109eb973b45614b790c36aca43618f65/tests/condarc">A detailed example <code>.condarc</code></a></p>
+</section><section id="creating-packages" class="slide level2" data-background="images/bg-7.png">
+<h1>Creating packages</h1>
+<p>Straightforward:</p>
+<ul>
+<li>A metadata document (<code>meta.yaml</code>) specifying the contents and dependencies</li>
+<li>A build command (<code>bld.bat</code>, <code>build.sh</code>) specifying how to build</li>
+</ul>
+</section><section id="creating-packages-1" class="slide level2" data-background="images/bg-7.png">
+<h1>Creating packages</h1>
+<p><code>meta.yaml</code>:</p>
+<div class="sourceCode"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span class="fu">package:</span>
+  <span class="fu">name:</span> pypdf2
+  <span class="fu">version:</span> <span class="st">&quot;1.25.1&quot;</span>
+
+<span class="fu">source:</span>
+  <span class="fu">fn:</span> PyPDF2-1.25.1.tar.gz
+  <span class="fu">url:</span> https://pypi.python.org/packages/source/P/PyPDF2/PyPDF2-1.25.1.tar.gz
+  <span class="fu">md5:</span> ee5e5b01d00b120805e5049e56c6fd7c
+
+<span class="fu">requirements:</span>
+  <span class="fu">run:</span>
+    <span class="kw">-</span> python</code></pre></div>
+</section><section id="creating-packages-2" class="slide level2" data-background="images/bg-7.png">
+<h1>Creating packages</h1>
+<p><code>bld.bat</code>:</p>
+<pre class="sh"><code>&quot;%PYTHON%&quot; setup.py install</code></pre>
+</section><section id="multiple-pythons" class="slide level2" data-background="images/bg-7.png">
+<h1>Multiple Pythons</h1>
+<p>Currently:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Platform</th>
+<th style="text-align: left;">Python version</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Desktop</td>
+<td style="text-align: left;">Python 2.7.x (2.7.10)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pro</td>
+<td style="text-align: left;">Python 3.4.x (3.4.3)</td>
+</tr>
+</tbody>
+</table>
+</section><section id="multiple-pythons-1" class="slide level2" data-background="images/bg-7.png">
+<h1>Multiple Pythons</h1>
+<p>Upgrade code? <a href="http://pro.arcgis.com/en/pro-app/arcpy/get-started/python-migration-for-arcgis-pro.htm">Python migration for ArcGIS Pro</a></p>
+<ul>
+<li>Do it already! You can support 2 + 3 without that much work</li>
+<li>If you hit an issue, it’s probably because you don’t understand Unicode yet – <a href="https://www.youtube.com/watch?v=sgHbC6udIqc">Watch this PyCon talk</a>, <em>Pragmatic Unicode, or, How do I stop the pain?</em></li>
+</ul>
+<div class="fragment">
+<p><br> But… this can be costly. For many organizations, a significant burden, even if the language changes are relatively small.</p>
+</div>
+</section><section id="multiple-pythons-with-conda" class="slide level2" data-background="images/bg-7.png">
+<h1>Multiple Pythons with Conda</h1>
+<p>With Conda, we can support multiple platforms:</p>
+<ul>
+<li>Py 2.7, 3.4, 3.5 in Pro 1.3</li>
+</ul>
+<p>Create a new environment, target a different Python, users can now use that with the Py2 code</p>
+<p>Still need to change <code>arcpy.mapping</code> to <code>arcpy.mp</code> when moving from Desktop to Pro, but no Python language level changes needed.</p>
+</section><section id="challenges" class="slide level2" data-background="images/bg-7.png">
+<h1>Challenges</h1>
+<p>Have to make sure you’re running the right Python (<em>what happens when you type <code>python</code> at the command line?</em>)</p>
+<ul>
+<li>We will make this easy as possible</li>
+<li>It’ll be easy to tell in app</li>
+<li>Isolated installation fixes a variety of issues</li>
+</ul>
+<p>Requires some user education over the “only one Python on the box” model</p>
+</section><section id="what-do-i-get-out-of-the-box" class="slide level2" data-background="images/bg-7.png">
+<h1>What Do I Get Out of the Box?</h1>
+<ul>
+<li>Conda command and a Conda root Python install</li>
+<li>New modules (e.g. <code>requests</code>)</li>
+<li>Conda environment with all of the ArcGIS Pro dependencies as Conda packages</li>
+</ul>
+</section><section id="how-can-i-use-this" class="slide level2" data-background="images/bg-7.png">
+<h1>How can I use this?</h1>
+<ul>
+<li>We already ship you the SciPy stack – powerful and out of the box, can use today (Pro and 10.4)</li>
+<li>Can start using <code>conda</code> today. Miniconda is fully stand-alone, won’t affect your global Python (unless you tell it to)</li>
+<li>Package your work: this is an opportunity to distribute it, possibly including commercial side as well.</li>
+</ul>
+</section><section id="where-can-i-run-this" class="slide level2" data-background="images/bg-7.png">
+<h1>Where Can I Run This?</h1>
+<figure>
+<img src="images/arcgis-pro-icon.png" class="tight" style="padding: 5px" />
+</figure>
+<ul>
+<li>ArcGIS Pro 1.3 (Release: 2016 UC)
+<ul>
+<li>Will be <em>the</em> Python install.</li>
+<li>UI for interaction</li>
+</ul></li>
+<li>Future:
+<ul>
+<li>Take advantage of more features</li>
+<li>Integration with platform</li>
+</ul></li>
+</ul>
+</section><section id="from-future-import" class="slide level2" data-background="images/bg-7.png">
+<h1>from future import *</h1>
+<p>Effectively manage complex software dependencies with Conda. Thousands of packages exist today, can integrate it into your organization’s needs.</p>
+</section></section>
+<section><section id="resources" class="titleslide slide level1" data-background="images/bg-7.png"><h1>Resources</h1></section><section id="resources-1" class="slide level2" data-background="images/bg-7.png">
+<h1>Resources</h1>
+<p><a href="https://github.com/conda/conda-recipes">Conda Recipes</a></p>
+<p><a href="https://anaconda.org">Anaconda.org</a></p>
+<p><a href="http://conda.pydata.org/docs/_downloads/conda-cheatsheet.pdf">Conda Cheatsheet</a></p>
+</section></section>
+<section><section id="closing" class="titleslide slide level1" data-background="images/bg-7.png"><h1>Closing</h1></section><section id="thanks" class="slide level2" data-background="images/bg-7.png">
+<h1>Thanks</h1>
+<p>Esri Conda Team:</p>
+<figure>
+<img src="images/conda-team.jpg" class="tight" style="width:600px" />
+</figure>
+<p>Continuum Analytics for creating and open sourcing Conda</p>
+</section><section id="rate-this-session" class="slide level2" data-background="images/bg-7.png">
+<h1>Rate This Session</h1>
+<p>iOS, Android: Feedback from within the app</p>
+<p>Windows Phone, don’t use a smartphone?: Cuniform tablets accepted (sorry! limitation).</p>
+<div class="fragment">
+<p><strong>Windows Phone, or no smartphone?</strong> Cuneiform tablets accepted.</p>
+<figure>
+<img src="images/Amarna_Akkadian_letter_rotated_2.png" style="border: none; background: none; box-shadow: none;" />
+</figure>
+</div>
+</section><section id="fin" class="slide level2" data-background="images/end.png">
+<h1><span style="display:none">fin</span></h1>
+</section></section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Display a presentation progress bar
+        progress: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: true,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
