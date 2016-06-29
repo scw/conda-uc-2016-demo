@@ -1,22 +1,15 @@
 % Harnessing the Power of Python in ArcGIS Using the Conda Distribution
-% Shaun Walbridge; Mark Janikas; Ting Lee
+% Shaun Walbridge
 
 <section data-background="images/title.png">
-<h2>[https://github.com/scw/conda-devsummit-2016-talk](https://github.com/scw/conda-devsummit-2016-talk)</h2>
-<h3>[Handout PDF](https://4326.us/esri/conda/devsummit-2016-conda-arcgis-presentation-handout.pdf)</h3>
-<h3>[High Quality PDF (2MB)](https://4326.us/esri/conda/devsummit-2016-conda-arcgis-presentation-full.pdf)</h3>
+<h2>[https://github.com/scw/conda-uc-2016-demo](https://github.com/scw/conda-uc-2016-demo)</h2>
+<h3>[High Quality PDF (2MB)](https://4326.us/esri/conda/uc-2016-conda-conda-demo-full.pdf)</h3>
 </section>
 
-Conda {data-background="images/bg-1.png"}
+Python {data-background="images/Picture2.jpg"}
 ======
 
-Conda {data-background="images/bg-1.png"}
------
-
- * Brand new: thought it was more important to show it to you than to focus on telling you about it
- * Time today to discuss your needs and what we might do to solve your problems
-
-Why Python? ![](images/logos/Python_64x64.png){class="tight"} {data-background="images/bg-1.png"}
+Why Python? ![](images/logos/Python_64x64.png){class="tight"} {data-background="images/Picture2.jpg"}
 -----------
 
  - Accessible for new-comers, and the [most taught first language in US universites](http://cacm.acm.org/blogs/blog-cacm/176450-python-is-now-the-most-popular-introductory-teaching-language-at-top-us-universities/fulltext)
@@ -24,7 +17,29 @@ Why Python? ![](images/logos/Python_64x64.png){class="tight"} {data-background="
  - Strong glue language used to bind together many environments, both open source and commercial
  - Open source with liberal license &mdash; do what you want
 
-Package Management for Python {data-background="images/bg-1.png"}
+Why Python? ![](images/logos/Python_64x64.png){class="tight"} {data-background="images/Picture2.jpg"}
+-----------
+
+In the box:
+
+ - The SciPy Stack (NumPy, SciPy, Pandas, matplotlib, sympy)
+
+    + [Scientific Programming with the SciPy Stack](https://4326.us/esri/scipy/#/)
+
+ - xlrd, netCDF4, requests, PyPDF, pytz
+
+Why Python? ![](images/logos/Python_64x64.png){class="tight"} {data-background="images/Picture2.jpg"}
+-----------
+
+Beyond the box:
+
+ - Integrating Open-Source Statistical Packages with ArcGIS using Python and R &mdash; Tomorrow at 10:15am, Ballroom 6D
+
+ - Python: Extending with Other Libraries &mdash; Today at 4:00pm, Tech Theater 16
+
+ - Deeper Dive into Conda in [DevSummit Tech Session Video](http://video.esri.com/watch/5072/harnessing-the-power-of-python-in-arcgis-using-the-conda-distribution)
+
+Package Management for Python {data-background="images/Picture2.jpg"}
 ----------------------------
 
 Why not ``pip``, wheels, virtualenvs?
@@ -33,33 +48,30 @@ Why not ``pip``, wheels, virtualenvs?
  - Package devs: On OSX and Linux, 'easy' to get the deps! Use a system package manager (e.g. ``apt``, ``brew``, ``yum``) and the included compiler (e.g. ``clang``, ``gcc``).
  - It's still not easy to make reproducible builds, and what about Windows?
 
-What about Windows? {data-background="images/bg-1.png"}
+What about Windows? {data-background="images/Picture2.jpg"}
 -------------------
 
  * We are particularly stuck on Windows which lacks broadly used package management 
-    - NuGet is great, but not a system-level package manager
-    - If managing applications, try [Chocolatey](https://chocolatey.org/)
- * Only devs have a C compiler on their machine
-    - The essential model is compilers for few, runtimes for all
- * Package management is hard! (Except on JavaScript -- universal compilers are a leg-up)
+ * Only developers have a C compiler on their machine
+ * A hard problem
 
 . . .
 
  * Enter Conda
 
-Why Conda? {data-background="images/bg-1.png"}
+Why Conda? {data-background="images/Picture2.jpg"}
 ----------
 
-![](images/logos/continuum_analytics.png){class="tight" style="width: 200px"}
+![](images/logos/continuum_analytics.png){style="width: 200px; background-color: rgba(255, 255, 255, 1);"}
 
 * Scientific Python community identified that there was a gap not being addressed by the core Python infrastructure, limiting their ability to get packages into the hands of users
 
-* Industry standard built by people who care about this space -- Continuum Analytics
+* Industry standard built by people who care about this space &mdash; Continuum Analytics
 
-Why Conda? {data-background="images/bg-1.png"}
+Why Conda? {data-background="images/Picture2.jpg"}
 ----------
 
-![](images/logos/continuum_analytics.png){class="tight" style="width: 200px"}
+![](images/logos/continuum_analytics.png){style="width: 200px; background-color: rgba(255, 255, 255, 1);"}
 
 * It solves a hard problem:
 
@@ -67,17 +79,14 @@ Why Conda? {data-background="images/bg-1.png"}
  - Built for Python first, but it really solves a much broader infrastructural issue.
 
 
-Conda {data-background="images/bg-7.png"}
+Conda {data-background="images/Picture5.jpg"}
 =====
 
-Conda ![](images/logos/anaconda_mini.png){class="tight"} {data-background="images/bg-7.png"}
+Conda ![](images/logos/anaconda_mini.png){class="tight"} {data-background="images/Picture5.jpg"}
 -----
 
- - Cross-platform: simply develop recipes for building and installing software on Linux, OS X and Windows. All it takes: a `meta.yaml`, and a build recipe.
- - Open source (BSD): Esri is using it, you can use it in your own projects for other contexts
-
-Conda ![](images/logos/anaconda_mini.png){class="tight"} {data-background="images/bg-7.png"}
------
+ - Cross-platform: simply develop recipes for building and installing software on Linux, OS X and Windows.
+ - Open source: Esri is using it, you can use it in your own projects for other contexts
 
 What can it install?  Not just scientific packages. It can help with:
 
@@ -85,41 +94,53 @@ What can it install?  Not just scientific packages. It can help with:
  - C++ Libraries (Boost)
  - IDEs (Spyder, Juptyer)
 
-See [conda-recipes](https://github.com/conda/conda-recipes/) for a comprehensive set of build recipes. Everything from applications to compilers to Python modules, hundreds of maintained recipes across many problem domains.
-
-Conda ![](images/logos/anaconda_mini.png){class="tight"} {data-background="images/bg-7.png"}
+Conda ![](images/logos/anaconda_mini.png){class="tight"} {data-background="images/Picture5.jpg"}
 --------------
 
  + Environments: Can isolate a Python environment, flexibly make changes withot affecting installed software.
- + Requirements -- include explicit state information, not just the package name. Names aren't enough!
+ + Requirements &mdash; include explicit state information, not just the package name. Names aren't enough!
  + Also handles platforms and Jupyter notebooks
 
-How Does it Work? {data-background="images/bg-7.png"}
+How Does it Work? {data-background="images/Picture5.jpg"}
 -----------------
 
 Conda packages can come from a variety of locations:
 
  - On disk (``file://``)
- - Public repositories hosted on Anaconda Cloud
- - Public repositories self-hosted
+ - Public repositories (Anaconda Cloud, self-hosted)
  - Private repositories
- - Paid private repositories
+ - [anaconda.org](https://anaconda.org)
 
-Conda Basics {data-background="images/bg-7.png"}
+Conda Basics {data-background="images/Picture5.jpg"}
 ------------
 
 <div style="float: right; align: right">
 ![](images/hazard.png){class="tight"}
 </div>
 <div>
-Command line interface
+Command line interface, for now
 
-Will show what we're working on to make this easier, especially for non-developers
-
-[Conda Cheatsheet](http://conda.pydata.org/docs/_downloads/conda-cheatsheet.pdf)
+ - [Conda Cheatsheet](http://conda.pydata.org/docs/_downloads/conda-cheatsheet.pdf)
 </div>
 
-Conda Basics {data-background="images/bg-7.png"}
+Conda Basics Demo {data-background="images/Picture5.jpg"}
+-----------------
+
+
+Conda Basics {data-background="images/Picture5.jpg"}
+------------
+
+Activating environments, a couple ways:
+
+ * Use the shortcuts
+ * Manually activate the environment:
+
+```sh
+    cd C:\ArcGIS\bin\Python\Scripts
+    activate arcgispro-py3
+```
+
+Conda Basics {data-background="images/Picture5.jpg"}
 ------------
 
 To start:
@@ -129,29 +150,17 @@ To start:
 * A collection of packages and Python install is called an *environment* or *env*, the building block for managing Python with Conda
 * Can have multiple environments and seamlessly switch between them
 
-Conda Basics {data-background="images/bg-7.png"}
-------------
 
-Activating environments, a couple ways:
-
- * Use the shortcuts
- * Manually activate the environment:
-
-```sh
-    cd /d C:\ArcGIS\bin\Python\Scripts
-    activate arcgispro-py3
-```
-
-Conda Basics {data-background="images/bg-7.png"}
+Conda Basics {data-background="images/Picture5.jpg"}
 ------------
 
 Once you're in an environment get details with ``info``:
 
     conda info
 
-Conda info is the starting point -- it tells you the state of the environment.
+Conda info is the starting point &mdash; it tells you the state of the environment.
 
-Conda Basics {data-background="images/bg-7.png"}
+Conda Basics {data-background="images/Picture5.jpg"}
 ------------
 
 ``conda info``
@@ -160,7 +169,7 @@ Conda Basics {data-background="images/bg-7.png"}
 Current conda install:
 
              platform : win-64
-        conda version : 4.0.4
+        conda version : 4.0.6
   conda-build version : not installed
        python version : 3.5.1.final.0
      requests version : 2.9.1
@@ -175,7 +184,7 @@ Current conda install:
           config file : C:\ArcGIS\bin\Python\.condarc
 ``` 
 
-Conda Basics {data-background="images/bg-7.png"}
+Conda Basics {data-background="images/Picture5.jpg"}
 ------------
 
 ``conda list``
@@ -183,27 +192,35 @@ Conda Basics {data-background="images/bg-7.png"}
 ```
 # packages in environment at C:\ArcGIS\bin\Python\envs\arcgispro-py3:
 #
-arcgispro                 1.0                           0    esri
+arcgispro                 1.3                           0    esri
+colorama                  0.3.6                    py34_0    defaults
+future                    0.15.2                   py34_0    defaults
 matplotlib                1.4.3                np19py34_0    defaults
+msvc_runtime              1.0.1                    vc10_0  [vc10]  defaults
 nose                      1.3.7                    py34_0    defaults
 numpy                     1.9.3                   py34_0e  [arcgispro]  esri
+openssl                   1.0.2h                   vc10_0  [vc10]  defaults
 pandas                    0.17.1               np19py34_0    esri
-pip                       8.0.3                    py34_0    defaults
-pyparsing                 2.0.3                    py34_0    defaults
+pip                       8.1.1                    py34_1    defaults
+py                        1.4.31                   py34_0    defaults
+pyparsing                 2.1.1                    py34_0    defaults
 pypdf2                    1.25.1                     py_0    esri
-python                    3.4.4                         2    defaults
-python-dateutil           2.4.2                    py34_0    defaults
-pytz                      2015.7                   py34_0    defaults
+pytest                    2.9.1                    py34_0    defaults
+python                    3.4.4                         4    defaults
+python-dateutil           2.5.3                    py34_0    defaults
+pytz                      2016.4                   py34_0    defaults
+requests                  2.9.1                    py34_0    defaults
 scipy                     0.16.1              np19py34_0e  [arcgispro]  esri
-setuptools                20.1.1                   py34_0    defaults
+setuptools                20.7.0                   py34_0    defaults
 six                       1.10.0                   py34_0    defaults
 sympy                     0.7.6.1                  py34_0    defaults
+vs2010_runtime            10.00.40219.1                 0    defaults
 wheel                     0.29.0                   py34_0    defaults
 xlrd                      0.9.4                    py34_0    defaults
 xlwt                      1.0.0                    py34_0    defaults
 ```
 
-Conda Basics {data-background="images/bg-7.png"}
+Conda Basics {data-background="images/Picture5.jpg"}
 ------------
 
 Creating new environments:
@@ -220,7 +237,7 @@ Creating new environments:
 These can contain explcit information about channels, to ensure that 
 the new environment precisely matches the requirements.
 
-Conda vs... {data-background="images/bg-7.png"}
+Conda vs... {data-background="images/Picture5.jpg"}
 -----------
 
 Name | Means | Will Ship?
@@ -230,69 +247,54 @@ Miniconda | A minimum set of Python packages to build and run Conda. | ✓
 Anaconda | A distribution 200+ packages built with Conda | &nbsp;
 Anaconda Server | Host the full infrastructure internally | &nbsp;
 
-Conda Demo {data-background="images/bg-7.png"}
-----------
+Skikit Learn Demo {data-background="images/Picture5.jpg"}
+-----------------
 
-Deeper Dive {data-background="images/bg-7.png"}
+ - Have tweets about an iOS app released at #SXSW
+ - What to people think of it? Use a naive bayes classifier to determine sentiment
+
+Skikit Learn Demo {data-background="images/Picture5.jpg"}
+-----------------
+
+```python
+# Scikit learn model based Lukas Biewald's Scikit Learn class
+# https://github.com/lukas/scikit-class
+
+import arcpy
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+
+input_csv = arcpy.GetParameterAsText(0)
+test_string = arcpy.GetParameterAsText(1)
+
+df = pd.read_csv(input_csv)
+target = df['is_there_an_emotion_directed_at_a_brand_or_product']
+text = df['tweet_text']
+```
+
+Skikit Learn Demo {data-background="images/Picture5.jpg"}
+-----------------
+
+```python
+fixed_text = text[pd.notnull(text)]
+fixed_target = target[pd.notnull(text)]
+
+count_vect = CountVectorizer()
+count_vect.fit(fixed_text)
+counts = count_vect.transform(fixed_text)
+
+nb = MultinomialNB()
+nb.fit(counts, fixed_target)
+
+# print out our prediction
+arcpy.AddMessage(nb.predict(count_vect.transform([test_string][0])))
+```
+
+Deeper Dive {data-background="images/Picture5.jpg"}
 ===========
 
-Conda Behind Firewall {data-background="images/bg-7.png"}
----------------------
-
-* How's it work?
-
-* Lock it down: Don't use network
-
-* Can vet the installation
-
-* Will work out of the box with default packages without any network connectivity
-
-``.condarc``&nbsp;{data-background="images/bg-7.png"}
-------------
-
-* Modify defaults with a simple simple YAML file for configuration
-* Can be updated with ``conda config``, just like using ``git config`` to update the default configuration
-
-[A detailed example ``.condarc``](https://github.com/conda/conda/blob/ae721928109eb973b45614b790c36aca43618f65/tests/condarc)
-
-Creating packages {data-background="images/bg-7.png"}
------------------
-
-Straightforward:
-
- * A metadata document (``meta.yaml``) specifying the contents and dependencies
- * A build command (``bld.bat``, ``build.sh``) specifying how to build
-
-Creating packages {data-background="images/bg-7.png"}
------------------
-
-``meta.yaml``:
-
-```yaml
-package:
-  name: pypdf2
-  version: "1.25.1"
-
-source:
-  fn: PyPDF2-1.25.1.tar.gz
-  url: https://pypi.python.org/packages/source/P/PyPDF2/PyPDF2-1.25.1.tar.gz
-  md5: ee5e5b01d00b120805e5049e56c6fd7c
-
-requirements:
-  run:
-    - python
-```
-
-Creating packages {data-background="images/bg-7.png"}
------------------
-
-``bld.bat``:
-
-```sh
-"%PYTHON%" setup.py install
-```
-
-Multiple Pythons {data-background="images/bg-7.png"}
+Multiple Pythons {data-background="images/Picture5.jpg"}
 ----------------
 
 Currently:
@@ -302,91 +304,66 @@ Platform | Python version
 Desktop |  Python 2.7.x (2.7.10)
 Pro | Python 3.4.x (3.4.3)
 
-Multiple Pythons {data-background="images/bg-7.png"}
+Multiple Pythons {data-background="images/Picture5.jpg"}
 ----------------
 
 Upgrade code?  [Python migration for ArcGIS Pro](http://pro.arcgis.com/en/pro-app/arcpy/get-started/python-migration-for-arcgis-pro.htm)
 
- - Do it already! You can support 2 + 3 without that much work
- - If you hit an issue, it's probably because you don't understand Unicode yet -- [Watch this PyCon talk](https://www.youtube.com/watch?v=sgHbC6udIqc), _Pragmatic Unicode, or, How do I stop the pain?_
-
+ - Do it! You can support 2 + 3 without that much work
+ - Still need to change ``arcpy.mapping`` to ``arcpy.mp`` when moving from Desktop to Pro, but no Python language level changes needed.
 . . .
 
 <br> 
 But... this can be costly. For many organizations, a significant burden, even if the
-language changes are relatively small.
+language changes are relatively small. Multiple Pythons is a solution to this.
 
-Multiple Pythons with Conda {data-background="images/bg-7.png"}
----------------------------
-
-With Conda, we can support multiple platforms:
-
- * Py 2.7, 3.4, 3.5 in Pro 1.3
-
-Create a new environment, target a different Python, users can now use that with the Py2 code
-
-Still need to change ``arcpy.mapping`` to ``arcpy.mp`` when moving from Desktop to Pro, but no Python language level changes needed.
-
-Challenges {data-background="images/bg-7.png"}
+Challenges {data-background="images/Picture5.jpg"}
 ----------
 
 Have to make sure you're running the right Python (_what happens when you type ``python`` at the command line?_)
 
- - We will make this easy as possible
+ - Working to make this easy as possible
  - It'll be easy to tell in app
  - Isolated installation fixes a variety of issues
 
 Requires some user education over the "only one Python on the box" model
 
-What Do I Get Out of the Box? {data-background="images/bg-7.png"}
+What Do I Get Out of the Box? {data-background="images/Picture5.jpg"}
 -----------------------------
 
 * Conda command and a Conda root Python install
 * New modules (e.g. ``requests``)
 * Conda environment with all of the ArcGIS Pro dependencies as Conda packages
 
-How can I use this? {data-background="images/bg-7.png"}
+How can I use this? {data-background="images/Picture5.jpg"}
 -------------------
 
- * We already ship you the SciPy stack -- powerful and out of the box, can use today (Pro and 10.4)
+ * We already ship you the SciPy stack &mdash; powerful and out of the box, can use today (Pro and 10.4)
  * Can start using ``conda`` today. Miniconda is fully stand-alone, won't affect your global Python (unless you tell it to)
  * Package your work: this is an opportunity to distribute it, possibly including commercial side as well.
 
-Where Can I Run This? {data-background="images/bg-7.png"}
+Where Can I Run This? {data-background="images/Picture5.jpg"}
 ---------------------
 
 ![](images/arcgis-pro-icon.png){class="tight" style="padding: 5px"}
 
- * ArcGIS Pro 1.3 (Release: 2016 UC)
+ * ArcGIS Pro 1.3
     - Will be _the_ Python install.
-    - UI for interaction
 
  * Future:
+    - UI for interaction
     - Take advantage of more features
     - Integration with platform
 
-from future import * {data-background="images/bg-7.png"}
+from future import * {data-background="images/Picture5.jpg"}
 --------------------
 
 Effectively manage complex software dependencies with Conda. Thousands of packages exist today, can integrate it into your organization's needs.
 
-Resources {data-background="images/bg-7.png"}
-=========
-
-Resources {data-background="images/bg-7.png"}
---------------
-
-[Conda Recipes](https://github.com/conda/conda-recipes)
-
-[Anaconda.org](https://anaconda.org)
-
-[Conda Cheatsheet](http://conda.pydata.org/docs/_downloads/conda-cheatsheet.pdf)
-
-
-Closing {data-background="images/bg-7.png"}
+Closing {data-background="images/closing.jpg"}
 =======
 
-Thanks {data-background="images/bg-7.png"}
+Thanks {data-background="images/closing.jpg"}
 ------
 
 Esri Conda Team:
@@ -395,20 +372,13 @@ Esri Conda Team:
 
 Continuum Analytics for creating and open sourcing Conda
 
-Rate This Session {data-background="images/bg-7.png"}
+Rate This Session {data-background="images/closing.jpg"}
 -----------------
 
-iOS, Android: Feedback from within the app
+Please take our survey, find session in app and provide review
 
-Windows Phone, don't use a smartphone?: Cuniform tablets accepted (sorry! limitation).
+![](images/phones.png){style="border: none; background: none; box-shadow: none;"}
 
-. . .
-
-**Windows Phone, or no smartphone?** Cuneiform tablets accepted.
-
-![](images/Amarna_Akkadian_letter_rotated_2.png){style="border: none; background: none; box-shadow: none;"}
-
-<span style="display:none">fin</span> {data-background="images/end.png"}
+<span style="display:none">fin</span> {data-background="images/closing.png"}
 ---
-
 

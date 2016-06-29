@@ -50,3 +50,10 @@
     font-size: 0.85em;
     color: #21AEDB;
 }
+
+pre, code {
+    /* background-color: #3563a6;*/
+    background-color: #0b2e63;
+}
+
+

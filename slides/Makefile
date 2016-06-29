@@ -1,13 +1,13 @@
-short = conda
+short = conda-uc
 deck = conda-arcgis
-event = devsummit-2016
-theme = esri-dev-summit-2016
+event = uc-2016
+theme = esri-uc-2016
 upload_loc = 4326.us:esri/$(short)
 public_loc = https://4326.us/esri/$(short)
 slide_dir = $(shell pwd)
 
 all:
-	pandoc -t revealjs -s slides.md -V controls=false -V progress=true -V history=true -V center=true -V transition=slide -V theme=$(theme) --css src/devsummit-custom.css --template=src/$(event).revealjs --highlight-style=zenburn --slide-level 2 -S -o index.html
+	pandoc -t revealjs -s slides.md -V controls=false -V progress=true -V history=true -V center=true -V transition=slide -V theme=$(theme) --css src/uc-custom.css --template=src/$(event).revealjs --highlight-style=zenburn --slide-level 2 -S -o index.html
 
 check:
 	linkchecker --check-extern index.html
