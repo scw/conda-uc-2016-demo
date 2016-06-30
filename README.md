@@ -6,7 +6,7 @@ Harnessing the Power of Python in ArcGIS using the Conda Distribution
 
 **[View the Slides](https://4326.us/esri/conda-uc/)**
 
-**[Download High Quality Version (PDF, 4MB)](https://4326.us/esri/conda-uc/uc-2016-conda-conda-demo-full.pdf)
+**[Download High Quality Version (PDF, 4MB)](https://4326.us/esri/conda-uc/uc-2016-conda-demo-full.pdf)
 
 Description
 -----------
