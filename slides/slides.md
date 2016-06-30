@@ -3,7 +3,7 @@
 
 <section data-background="images/title.png">
 <h2>[https://github.com/scw/conda-uc-2016-demo](https://github.com/scw/conda-uc-2016-demo)</h2>
-<h3>[High Quality PDF (2MB)](https://4326.us/esri/conda/uc-2016-conda-conda-demo-full.pdf)</h3>
+<h3>[High Quality PDF (2MB)](https://4326.us/esri/conda-uc/uc-2016-conda-arcgis-demo-full.pdf)</h3>
 </section>
 
 Python {data-background="images/Picture2.jpg"}

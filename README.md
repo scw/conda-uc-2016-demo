@@ -1,14 +1,12 @@
 Harnessing the Power of Python in ArcGIS using the Conda Distribution
 =====================================================================
 
-### Shaun Walbridge & Mark Janikas & Ting Lee
-### Esri DevSummit 2016
+### Shaun Walbridge
+### Esri UC 2016
 
-**[View the Slides](https://4326.us/esri/conda/)**
+**[View the Slides](https://4326.us/esri/conda-uc/)**
 
-**[Download Handout Version (PDF)](https://4326.us/esri/conda/devsummit-2016-conda-arcgis-presentation-handout.pdf)**
-
-**[Download High Quality Version (PDF, 4MB)](https://4326.us/esri/r/devsummit-2016-conda-arcgis-presentation-full.pdf)**
+**[Download High Quality Version (PDF, 4MB)](https://4326.us/esri/conda-uc/uc-2016-conda-conda-demo-full.pdf)
 
 Description
 -----------
